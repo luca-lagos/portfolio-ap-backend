@@ -4,6 +4,7 @@ import java.util.List;
 import com.ap.portfolio.lucalagos.Entity.User;
 import com.ap.portfolio.lucalagos.Interface.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,23 +18,27 @@ public class UserController {
         return iUserService.GetUsers();
     }
 
+
     @GetMapping("/users/my-profile")
     public User FindUser(){
         return iUserService.FindUser((long)1);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/users/add")
     public String CreateUser(@RequestBody User user){
         iUserService.AddUser(user);
         return "El usuario ha sido creado correctamente";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/users/delete/{id}")
     public String DeleteUser(@PathVariable Long id){
         iUserService.DeleteUser(id);
         return "El usuario ha sido eliminado correctamente";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/users/edit/{id}")
     public User UpdateUser(@PathVariable Long id,
                              @RequestParam("name") String new_name,
