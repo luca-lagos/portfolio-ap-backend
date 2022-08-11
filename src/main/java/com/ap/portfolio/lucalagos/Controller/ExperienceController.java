@@ -13,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.xml.ws.Response;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @RestController
@@ -46,6 +47,7 @@ public class ExperienceController {
         if(experienceService.FindExperienceByJobName(experienceDTO.getJobName())){
             return new ResponseEntity(new Message("La experiencia ya existe"), HttpStatus.BAD_REQUEST);
         }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Experience experience = new Experience(experienceDTO.getJobName(), experienceDTO.getJobDescription(), experienceDTO.getBusinessName(), experienceDTO.getBusinessImg(), experienceDTO.getLocation(), experienceDTO.getCountryLocation() , experienceDTO.getWorkTime(), experienceDTO.getWorkStart(), experienceDTO.getWorkEnd(), experienceDTO.isActualWork());
         experienceService.AddExperience(experience);
         return new ResponseEntity(new Message("La experiencia ha sido creada correctamente"), HttpStatus.OK);

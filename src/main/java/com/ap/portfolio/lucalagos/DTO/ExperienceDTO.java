@@ -1,6 +1,7 @@
 package com.ap.portfolio.lucalagos.DTO;
 
 import javax.validation.constraints.NotBlank;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ExperienceDTO {
