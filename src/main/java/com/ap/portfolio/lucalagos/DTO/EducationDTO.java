@@ -1,42 +1,33 @@
-package com.ap.portfolio.lucalagos.Entity;
+package com.ap.portfolio.lucalagos.DTO;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
-@Entity
-public class Education {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class EducationDTO {
+    @NotBlank
     private String title;
+    @NotBlank
     private String instituteName;
+    @NotBlank
     private String instituteImg;
+    @NotBlank
     private Date eduStart;
+    @NotBlank
     private Date eduEnd;
+    @NotBlank
     private boolean actualEdu;
 
-    public Education() {
+    public EducationDTO(){
 
     }
 
-    public Education(String title, String instituteName, String instituteImg, Date eduStart, Date eduEnd, boolean actualEdu) {
+    public EducationDTO(String title, String instituteName, String instituteImg, Date eduStart, Date eduEnd, boolean actualEdu) {
         this.title = title;
         this.instituteName = instituteName;
         this.instituteImg = instituteImg;
         this.eduStart = eduStart;
         this.eduEnd = eduEnd;
         this.actualEdu = actualEdu;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {

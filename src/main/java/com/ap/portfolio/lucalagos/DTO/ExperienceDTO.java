@@ -1,7 +1,6 @@
 package com.ap.portfolio.lucalagos.DTO;
 
 import javax.validation.constraints.NotBlank;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ExperienceDTO {
@@ -15,7 +14,7 @@ public class ExperienceDTO {
     private String businessImg;
     @NotBlank
     private String location;
-
+    @NotBlank
     private String countryLocation;
     @NotBlank
     private String workTime;

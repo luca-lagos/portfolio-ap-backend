@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -30,7 +29,6 @@ public class Experience {
     }
 
     public Experience(String jobName, String jobDescription, String businessName, String businessImg, String location, String countryLocation, String workTime, Date workStart, Date workEnd, boolean actualWork) {
-        this.id = id;
         this.jobName = jobName;
         this.jobDescription = jobDescription;
         this.businessName = businessName;

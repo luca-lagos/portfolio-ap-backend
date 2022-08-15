@@ -47,7 +47,6 @@ public class ExperienceController {
         if(experienceService.FindExperienceByJobName(experienceDTO.getJobName())){
             return new ResponseEntity(new Message("La experiencia ya existe"), HttpStatus.BAD_REQUEST);
         }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Experience experience = new Experience(experienceDTO.getJobName(), experienceDTO.getJobDescription(), experienceDTO.getBusinessName(), experienceDTO.getBusinessImg(), experienceDTO.getLocation(), experienceDTO.getCountryLocation() , experienceDTO.getWorkTime(), experienceDTO.getWorkStart(), experienceDTO.getWorkEnd(), experienceDTO.isActualWork());
         experienceService.AddExperience(experience);
         return new ResponseEntity(new Message("La experiencia ha sido creada correctamente"), HttpStatus.OK);
@@ -83,9 +82,9 @@ public class ExperienceController {
 
     /*@PreAuthorize("hasRole('ADMIN')")*/
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> DeleteExperience(@PathVariable("id") int id, @RequestBody ExperienceDTO experienceDTO){
+    public ResponseEntity<?> DeleteExperience(@PathVariable("id") int id){
         if(!experienceService.FindExperienceById(id)){
-            return new ResponseEntity(new Message("La experiencia no existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Message("La experiencia no existe"), HttpStatus.NOT_FOUND);
         }
         experienceService.DeleteExperience(id);
         return new ResponseEntity(new Message("La experiencia ha sido eliminada correctamente"), HttpStatus.OK);
