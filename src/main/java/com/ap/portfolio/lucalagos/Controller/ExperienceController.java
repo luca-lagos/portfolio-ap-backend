@@ -6,14 +6,11 @@ import com.ap.portfolio.lucalagos.Security.Controller.Message;
 import com.ap.portfolio.lucalagos.Service.ExperienceService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 @RestController
@@ -59,7 +56,7 @@ public class ExperienceController {
             return new ResponseEntity(new Message("La experiencia no existe"), HttpStatus.BAD_REQUEST);
         }
         if(experienceService.FindExperienceByJobName(experienceDTO.getJobName()) && experienceService.GetByJobName(experienceDTO.getJobName()).get().getId() != id){
-            return new ResponseEntity(new Message("La experencia ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Message("La experiencia ya existe"), HttpStatus.BAD_REQUEST);
         }
         if(StringUtils.isBlank(experienceDTO.getJobName())){
             return new ResponseEntity(new Message("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);

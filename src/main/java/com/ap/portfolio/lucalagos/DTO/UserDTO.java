@@ -1,42 +1,28 @@
-package com.ap.portfolio.lucalagos.Entity;
+package com.ap.portfolio.lucalagos.DTO;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotBlank;
 
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false)
-    private int id;
+public class UserDTO {
+    @NotBlank
     private String name;
+    @NotBlank
     private String lastname;
+    @NotBlank
     private String profession;
+    @NotBlank
     private String location;
+    @NotBlank
     private String countryLocation;
+    @NotBlank
     private String userProfileImg;
+    @NotBlank
     private String userBackgroundImg;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "id")
-    private AboutMe aboutMe;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
-    private List<Experience> experienceList;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
-    private List<Education> educationList;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
-    private List<Skill> skillList;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
-    private List<Project> projectList;
-
-    public User(){
+    public UserDTO(){
 
     }
 
-    public User(String name, String lastname, String profession, String location, String countryLocation, String userProfileImg, String userBackgroundImg) {
+    public UserDTO(String name, String lastname, String profession, String location, String countryLocation, String userProfileImg, String userBackgroundImg) {
         this.name = name;
         this.lastname = lastname;
         this.profession = profession;
@@ -44,14 +30,6 @@ public class User {
         this.countryLocation = countryLocation;
         this.userProfileImg = userProfileImg;
         this.userBackgroundImg = userBackgroundImg;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

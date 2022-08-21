@@ -1,36 +1,36 @@
 package com.ap.portfolio.lucalagos.Service;
 
 import com.ap.portfolio.lucalagos.Entity.User;
-import com.ap.portfolio.lucalagos.Interface.IUserService;
 import com.ap.portfolio.lucalagos.Repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("UserService")
-public class UserService implements IUserService {
+@Transactional
+public class UserService {
     @Autowired IUserRepository iUserRepository;
 
-    @Override
     public List<User> GetUsers() {
-        List<User> userList = iUserRepository.findAll();
-        return userList;
+        return iUserRepository.findAll();
     }
 
-    @Override
+    public Optional<User> GetOneUser(int id){
+        return iUserRepository.findById(id);
+    }
+
     public void AddUser(User user) {
         iUserRepository.save(user);
     }
 
-    @Override
-    public void DeleteUser(Long id) {
+    public void DeleteUser(int id) {
         iUserRepository.deleteById(id);
     }
 
-    @Override
-    public User FindUser(Long id) {
-        User user = iUserRepository.findById(id).orElse(null);
-        return user;
+    public boolean FindUserById(int id) {
+        return iUserRepository.existsById(id);
     }
 }
