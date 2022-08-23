@@ -1,9 +1,6 @@
 package com.ap.portfolio.lucalagos.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -14,6 +11,7 @@ public class Experience {
     private String jobName;
     private String jobDescription;
     private String businessName;
+    @Column(length = 5000)
     private String businessImg;
     private String location;
 

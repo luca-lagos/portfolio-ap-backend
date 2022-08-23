@@ -8,10 +8,20 @@ public class AboutMe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
     private int id;
+
+    @Column(length = 5000)
     private String description;
 
     public AboutMe(){
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public AboutMe(String description) {

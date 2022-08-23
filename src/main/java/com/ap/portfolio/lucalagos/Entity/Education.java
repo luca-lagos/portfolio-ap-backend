@@ -1,9 +1,6 @@
 package com.ap.portfolio.lucalagos.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,6 +10,7 @@ public class Education {
     private int id;
     private String title;
     private String instituteName;
+    @Column(length = 5000)
     private String instituteImg;
     private Date eduStart;
     private Date eduEnd;

@@ -48,7 +48,7 @@ public class SkillController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<?> UpdateSkill(@PathVariable("id") int id, SkillDTO skillDTO){
+    public ResponseEntity<?> UpdateSkill(@PathVariable("id") int id,@RequestBody SkillDTO skillDTO){
         if(StringUtils.isBlank(skillDTO.getName())){
             return new ResponseEntity(new Message("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }

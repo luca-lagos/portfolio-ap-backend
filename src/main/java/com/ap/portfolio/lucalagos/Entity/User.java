@@ -1,6 +1,7 @@
 package com.ap.portfolio.lucalagos.Entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -14,11 +15,13 @@ public class User {
     private String profession;
     private String location;
     private String countryLocation;
+    @Column(length = 5000)
     private String userProfileImg;
+    @Column(length = 5000)
     private String userBackgroundImg;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "id")
-    private AboutMe aboutMe;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
+    private List<AboutMe> aboutMeList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
     private List<Experience> experienceList;
