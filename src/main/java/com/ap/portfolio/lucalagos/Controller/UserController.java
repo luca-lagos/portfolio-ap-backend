@@ -17,7 +17,7 @@ import javax.xml.ws.Response;
 
 @RestController
 @RequestMapping("user")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://frontend-port-ap-luca-lagos.web.app")
 public class UserController {
     @Autowired
     UserService userService;
@@ -70,36 +70,4 @@ public class UserController {
         userService.DeleteUser(id);
         return new ResponseEntity(new Message("Los datos del usuario han sido eliminados correctamente"), HttpStatus.OK);
     }
-
-    /*@GetMapping("/users/my-profile")
-    public User FindUser(){
-        return iUserService.FindUser((long)1);
-    }*/
-
-    /*@PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/users/add")
-    public String CreateUser(@RequestBody User user){
-        iUserService.AddUser(user);
-        return "El usuario ha sido creado correctamente";
-    }*/
-
-    /*@PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/users/delete/{id}")
-    public String DeleteUser(@PathVariable Long id){
-        iUserService.DeleteUser(id);
-        return "El usuario ha sido eliminado correctamente";
-    }*/
-
-    /*@PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/users/edit/{id}")
-    public User UpdateUser(@PathVariable Long id,
-                             @RequestParam("name") String new_name,
-                             @RequestParam("lastname") String new_lastname, @RequestParam("profile_img") String new_profile_img){
-        User user = iUserService.FindUser(id);
-        user.setName(new_name);
-        user.setLastname(new_lastname);
-        user.setProfile_img(new_profile_img);
-        iUserService.AddUser(user);
-        return user;
-    }*/
 }
