@@ -5,8 +5,9 @@ import com.ap.portfolio.lucalagos.Security.Enums.RoleName;
 import com.ap.portfolio.lucalagos.Security.Repository.IRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.util.Optional;
 
 @Service

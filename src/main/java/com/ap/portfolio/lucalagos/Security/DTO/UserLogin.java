@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank;
 
 public class UserLogin {
     @NotBlank
-    private String user_name;
+    private String email;
     @NotBlank
     private String password;
 
@@ -12,17 +12,17 @@ public class UserLogin {
 
     }
 
-    public UserLogin(String user_name, String password) {
-        this.user_name = user_name;
+    public UserLogin(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

@@ -9,6 +9,7 @@ public class Experience {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String jobName;
+    @Column(length = 5000)
     private String jobDescription;
     private String businessName;
     @Column(length = 5000)

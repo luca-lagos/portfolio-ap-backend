@@ -1,9 +1,6 @@
 package com.ap.portfolio.lucalagos.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,7 +10,9 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
+    @Column(length = 5000)
     private String description;
+    @Column(length = 500)
     private String linkWeb;
     private Date projectStart;
     private Date projectEnd;

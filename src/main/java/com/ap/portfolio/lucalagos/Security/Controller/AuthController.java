@@ -72,7 +72,7 @@ public class AuthController {
             return new ResponseEntity(new Message("Campos erróneos"), HttpStatus.BAD_REQUEST);
         }
 
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLogin.getUser_name(), userLogin.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLogin.getEmail(), userLogin.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String Jwt = jwtProvider.GenerateToken(authentication);
